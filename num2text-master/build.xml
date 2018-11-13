@@ -20,4 +20,14 @@
     <delete dir="build" />
     <delete dir="dist" />
 </target>
-</project>
+<target name="war" depends="build">                                                                      
+   <mkdir dir="${build.dir}"/>                                                                            
+   <war                                                                                                   
+      needxmlfile="false"                                                                                  
+     basedir="${webroot.dir}"                                                                             
+      destfile="${build.dir}/${project.distname}.war">                                                      
+      <exclude name="WEB-INF/${build.dir}/**"/>                                                            
+      <exclude name="WEB-INF/src/**"/>                                                                     
+    </war>                                                                                                
+</target>
+  </project>
